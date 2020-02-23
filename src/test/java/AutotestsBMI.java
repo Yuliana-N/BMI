@@ -19,5 +19,19 @@ public class AutotestsBMI {
         System.out.println(category);
         browser.quit();//закрыть браузер
     }
+    @Test
+    public void categoryOverweigth() {
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        WebDriver browser = new ChromeDriver();
+        browser.get("https://healthunify.com/bmicalculator/");
+        browser.findElement(By.name("wg")).sendKeys("100");
+        browser.findElement(By.name("ht")).sendKeys("163");
+        browser.findElement(By.name("cc")).click();
+        String category = browser.findElement(By.name("desc")).getAttribute("value");//если нужно взять текст, getText! не работает берём getAttribute
+        assertEquals(category, "Your category is Obese", "Категория верная"); //сравнивает первое со вторым
+        System.out.println(category);
+        browser.quit();//закрыть браузер
+    }
+
 
 }
