@@ -46,6 +46,22 @@ public class AutotestsBMI {
         browser.quit();//закрыть браузер
 
     }
+    @Test
+    public void checkMinWeightAlert() {
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        WebDriver browser = new ChromeDriver();
+        browser.get("https://healthunify.com/bmicalculator/");
+        browser.findElement(By.name("wg")).sendKeys("10");
+        browser.findElement(By.name("ht")).sendKeys("185");
+        browser.findElement(By.name("cc")).click();
+        // browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        String alerttext = browser.switchTo().alert().getText();
+        assertEquals(alerttext, "Weight should be greater than 10kgs", "Введено значение меньше допустимого");
+        System.out.println(alerttext);
+        browser.switchTo().alert().accept();
+        browser.quit();//закрыть браузер
+    }
+
 
 
 
