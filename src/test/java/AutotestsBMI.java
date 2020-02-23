@@ -75,6 +75,22 @@ public class AutotestsBMI {
         System.out.println(category);
         browser.quit();//закрыть браузер
     }
+    @Test
+    // тест падает, т.к. минимальное значение вводимое в поле должно быть 34, в реальности это 33. При вводе 33 не отображается предупреждающее окно
+    public void checkMinHeightAlert() {
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        WebDriver browser = new ChromeDriver();
+        browser.get("https://healthunify.com/bmicalculator/");
+        browser.findElement(By.name("wg")).sendKeys("50");
+        browser.findElement(By.name("ht")).sendKeys("33");
+        browser.findElement(By.name("cc")).click();
+        // browser.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        String alerttext = browser.switchTo().alert().getText();
+        assertEquals(alerttext, "Height should be taller than 33cms", "Введено значение меньше допустимого");
+        System.out.println(alerttext);
+        browser.switchTo().alert().accept();
+        browser.quit();//закрыть браузер
+    }
 
 
 
