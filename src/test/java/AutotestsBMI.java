@@ -32,6 +32,21 @@ public class AutotestsBMI {
         System.out.println(category);
         browser.quit();//закрыть браузер
     }
+    @Test
+    public void categoryStarvation() {
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        WebDriver browser = new ChromeDriver();
+        browser.get("https://healthunify.com/bmicalculator/");
+        browser.findElement(By.name("wg")).sendKeys("45");
+        browser.findElement(By.name("ht")).sendKeys("185");
+        browser.findElement(By.name("cc")).click();
+        String category = browser.findElement(By.name("desc")).getAttribute("value");//если нужно взять текст, getText! не работает берём getAttribute
+        assertEquals(category, "Your category is Starvation", "Категория верная"); //сравнивает первое со вторым
+        System.out.println(category);
+        browser.quit();//закрыть браузер
+
+    }
+
 
 
 }
