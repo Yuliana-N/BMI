@@ -14,10 +14,10 @@ public class AutotestsBMI {
         browser.findElement(By.name("wg")).sendKeys("54");
         browser.findElement(By.name("ht")).sendKeys("163");
         browser.findElement(By.name("cc")).click();
-        String category = browser.findElement(By.name("desc")).getAttribute("value");//если нужно взять текст, getText! не работает берём getAttribute
-        assertEquals(category, "Your category is Normal", "Категория верная"); //сравнивает первое со вторым
+        String category = browser.findElement(By.name("desc")).getAttribute("value");
+        assertEquals(category, "Your category is Normal", "Категория верная");
         System.out.println(category);
-        browser.quit();//закрыть браузер
+        browser.quit();
     }
     @Test
     public void categoryOverweigth() {
@@ -27,10 +27,10 @@ public class AutotestsBMI {
         browser.findElement(By.name("wg")).sendKeys("100");
         browser.findElement(By.name("ht")).sendKeys("163");
         browser.findElement(By.name("cc")).click();
-        String category = browser.findElement(By.name("desc")).getAttribute("value");//если нужно взять текст, getText! не работает берём getAttribute
-        assertEquals(category, "Your category is Obese", "Категория верная"); //сравнивает первое со вторым
+        String category = browser.findElement(By.name("desc")).getAttribute("value");
+        assertEquals(category, "Your category is Obese", "Категория верная");
         System.out.println(category);
-        browser.quit();//закрыть браузер
+        browser.quit();
     }
     @Test
     public void categoryStarvation() {
@@ -40,10 +40,10 @@ public class AutotestsBMI {
         browser.findElement(By.name("wg")).sendKeys("45");
         browser.findElement(By.name("ht")).sendKeys("185");
         browser.findElement(By.name("cc")).click();
-        String category = browser.findElement(By.name("desc")).getAttribute("value");//если нужно взять текст, getText! не работает берём getAttribute
-        assertEquals(category, "Your category is Starvation", "Категория верная"); //сравнивает первое со вторым
+        String category = browser.findElement(By.name("desc")).getAttribute("value");
+        assertEquals(category, "Your category is Starvation", "Категория верная");
         System.out.println(category);
-        browser.quit();//закрыть браузер
+        browser.quit();
 
     }
     @Test
@@ -59,7 +59,7 @@ public class AutotestsBMI {
         assertEquals(alerttext, "Weight should be greater than 10kgs", "Введено значение меньше допустимого");
         System.out.println(alerttext);
         browser.switchTo().alert().accept();
-        browser.quit();//закрыть браузер
+        browser.quit();
     }
 
     @Test
@@ -70,10 +70,10 @@ public class AutotestsBMI {
         browser.findElement(By.name("wg")).sendKeys("11");
         browser.findElement(By.name("ht")).sendKeys("185");
         browser.findElement(By.name("cc")).click();
-        String category = browser.findElement(By.name("desc")).getAttribute("value");//если нужно взять текст, getText! не работает берём getAttribute
-        assertEquals(category, "Your category is Starvation", "Введёно граничное значение - отрабатывает корректно "); //сравнивает первое со вторым
+        String category = browser.findElement(By.name("desc")).getAttribute("value");
+        assertEquals(category, "Your category is Starvation", "Введёно граничное значение - отрабатывает корректно ");
         System.out.println(category);
-        browser.quit();//закрыть браузер
+        browser.quit();
     }
     @Test
     // тест падает, т.к. минимальное значение вводимое в поле должно быть 34, в реальности это 33. При вводе 33 не отображается предупреждающее окно
@@ -89,7 +89,7 @@ public class AutotestsBMI {
         assertEquals(alerttext, "Height should be taller than 33cms", "Введено значение меньше допустимого");
         System.out.println(alerttext);
         browser.switchTo().alert().accept();
-        browser.quit();//закрыть браузер
+        browser.quit();
     }
 
 
